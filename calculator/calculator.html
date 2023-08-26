@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+</head>
+<style>
+    *{
+        margin: none;
+        box-sizing: border-box;
+        padding: none;
+    }
+    body{
+        margin: 0 auto;
+        background-color: darkslategrey;
+        width: 50%;
+    }
+
+    .inputs{
+        margin: 10px 0;
+        
+    }
+
+    .inputs input{
+        padding: 20px;
+        border-radius: 30px;
+        outline: none;
+        border: none;
+    }
+
+    .number-div{
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        width: 250px;
+        gap: 10px;
+        padding: none;
+    }
+
+    .number-div h3{
+        padding: 10px;
+        box-shadow: inset 2px 2px 0 #000;
+        display: inline;
+        font-size: 30px;
+    }
+
+    .numberSigns{
+        display: flex;
+        gap: 20px;
+        padding: 20px;
+        color: white;
+    }
+    .numberSigns .signs{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 5px;
+        margin: 13px;
+        padding: 15px;
+    }
+
+     .numberSigns input{
+        /* display: none; */
+    }
+
+    button{
+        padding: 10px 25px;
+        font-size: 30px;
+    }
+
+    label{
+        padding: 3px 7px;
+        font-size: 30px;
+        border: none;
+        border-radius: 5px;
+        background-color: rgb(28, 46, 46);
+        color: white;
+        display: grid;
+        place-items: center;
+    }
+</style>
+<body>
+    <div class="inputs">
+        <input type="text" id="firstValue">
+        <input type="text" id="secondValue">
+        <h2 id="result"></h2>
+    </div>
+    <div class="numberSigns">
+        <div class="number-div">
+            <h3 id="number1">1</h3>
+            <h3 id="number2">2</h3>
+            <h3 id="number3">3</h3>
+            <h3 id="number4">4</h3>
+            <h3 id="number5">5</h3>
+            <h3 id="number6">6</h3>
+            <h3 id="number7">7</h3>
+            <h3 id="number8">8</h3>
+            <h3 id="number9">9</h3>
+            <h3 id="number0">0</h3>
+            
+            
+        </div>
+        <div class="signs">
+            <input type="radio" name="mathInputs" id="plus">
+            <input type="radio" name="mathInputs" id="substract">
+            <input type="radio" name="mathInputs" id="divide">
+            <input type="radio" name="mathInputs" id="multiple">
+            <input type="radio" name="mathInputs" id="root">
+            <input type="radio" name="mathInputs" id="percent">
+            <input type="radio" name="mathInputs" id="power">
+            <input type="radio" name="mathInputs" id="power3">
+            <input type="radio" name="mathInputs" id="cos">
+            <input type="radio" name="mathInputs" id="sin">
+            <label for="plus">+</label>
+        <label for="substract">-</label>
+        <label for="divide">/</label>
+        <label for="multiple">×</label>
+        <label for="root">√</label>
+        <label for="percent">%</label>
+        <label for="power">Ⅹ²</label>
+        <label for="power3">Ⅹ³</label>
+        <label for="cos">cos</label>
+        <label for="sin">sin</label>
+    </div>
+</div>
+
+<button onclick="calculate()">=</button>
+
+<script>
+
+        function calculate(){
+                let input1 = document.getElementById('firstValue').value;
+            input1 = parseInt(input1)
+            let input2 = document.getElementById("secondValue").value;
+                input2 = parseInt(input2)         
+            let result = document.getElementById('result');
+            let plus = document.getElementById('plus').checked;
+            let substract = document.getElementById('substract').checked;
+            let divide = document.getElementById('divide').checked;
+            let multiple = document.getElementById('multiple').checked;
+            let root = document.getElementById('root').checked;
+            let percent = document.getElementById('percent').checked;
+            let power = document.getElementById('power').checked;
+            let power3 = document.getElementById('power3').checked;
+            let cos = document.getElementById('cos').checked;
+            let sin = document.getElementById('sin').checked;
+            if(plus){
+                result.innerHTML = input1 + input2
+            }else if(substract){
+                result.innerHTML = input1 - input2
+            }else if(divide){
+                result.innerHTML = input1 / input2
+            }else if(multiple){
+                result.innerHTML = input1 * input2
+            }else if(percent){
+                result.innerHTML = (input1 * input2)/100;
+            }else if(root){
+                result.innerHTML = Math.sqrt(input1)
+            }else if(power){
+                let resultPower = 1;
+                let counter = 0;
+                while (counter < input1) {
+                resultPower = resultPower * 2;
+                counter = counter + 1;
+                }
+                result.innerHTML = resultPower
+            }else if(power3){
+                let resultPower = 1;
+                let counter = 0;
+                while (counter < input1) {
+                resultPower = resultPower * 3;
+                counter = counter + 1;
+                }
+                result.innerHTML = resultPower
+            }
+            else if(cos){
+                result.innerHTML = Math.cos(input1);
+            }else if(sin){
+                result.innerHTML = Math.sin(input1);
+            }
+        }
+
+
+        
+
+        //     let number1 = document.getElementById('number1');
+        //     let number2 = document.getElementById('number2');
+        //     let number3 = document.getElementById('number3');
+        //     let number4 = document.getElementById('number4');
+        //     let number5 = document.getElementById('number5');
+        //     let number6 = document.getElementById('number6');
+        //     let number7 = document.getElementById('number7');
+        //     let number8 = document.getElementById('number8');
+        //     let number9 = document.getElementById('number9');
+        //     let number0 = document.getElementById('number0');
+
+        // number2.addEventListener('click', () => {
+
+        //     if(document.getElementById('input1').acti){
+        //     document.getElementById('input1').value = 0 
+
+        //     }
+        // })
+        
+
+
+    </script>
+</body>
+</html>
